@@ -144,7 +144,7 @@ If you know certain important ligand-residue interactions, such as hydrogen bond
 1. Generate a new PDB file with the ligand docked into the protein in the optimal docking pose as determined by the algorithm.
    
 ``` markdown
-python3 outname.py 
+python3 test_outname.py 
 ```
 This will generate complexes (protname_ligandname.pdb) for all the files that have been docked.
 
