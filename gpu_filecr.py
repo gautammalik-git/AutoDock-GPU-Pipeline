@@ -61,8 +61,6 @@ if len(sys.argv) == 5:
         os.system("rm autodock_gpu_128wi")
         os.chdir(directory_name)
         shutil.copy(path_out+"/"+lig_name[:-4]+".dlg", directory_name)
-        #os.system("python dock_analyse.py "+lig_name+" "+lig_name[:-4]+".dlg"+" analyse "+prot_name)
-        #shutil.move(directory_name+"/analyse", path_out+"/analyse")
         os.system("rm "+prot_name)
 else:
 	print("Usage python gpu_filecr.py <prot_name> <lig_name> <centroid_coordinate> <nrun>")
