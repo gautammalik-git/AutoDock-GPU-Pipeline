@@ -9,7 +9,7 @@ This pipeline facilitates setting up ligand docking against a protein using Auto
 3. Make sure to download the MGLtools tar file compatible with your system, which is essential for running both AutoDock GUI (ADT) and AutoDock4. It is available on their [website](https://ccsb.scripps.edu/mgltools/).
 
 
-Incase you face anyproblem compiling the software, you can use the following steps:
+Incase you face any problem compiling the software, you can use the following steps:
 
 **Make sure you have OPENCL installed**
 
