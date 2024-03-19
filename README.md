@@ -101,7 +101,7 @@ Make sure you are in the working directory with all the ligand PDB files, protei
 python3 gpu_hts.py <prot_name> <x,y,z> <nrun>
 ```
 
-Here <prot_name> is the protein PDB file, <x,y,z> are the coordinated and <nrun> are the number of LGA runs. 
+Here <prot_name> is the protein PDB file, <x,y,z> are the coordinated and 'nrun' are the number of LGA runs. 
 
 This initiates the docking process for the ligands located in the current working directory (cwd) with the specified protein.
 
