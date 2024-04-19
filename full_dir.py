@@ -4,7 +4,7 @@ import shutil
 old_path = os.getcwd()
 #print(old_path)
 list = []
-energy_file = "checklines.txt"
+energy_file = "Energy.txt"
 with open(energy_file) as f:
     data = f.readlines()
 
