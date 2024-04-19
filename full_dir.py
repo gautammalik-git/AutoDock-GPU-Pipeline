@@ -9,7 +9,7 @@ with open(energy_file) as f:
     data = f.readlines()
 
 for lines in data:
-    dir = lines[6:13]
+    dir = lines[:13]
     dir_split = dir.split(" ")
     ful_dir = dir_split[0]+".dlg"
 
