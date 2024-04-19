@@ -24,7 +24,7 @@ if os.path.exists(old_path + "/" + "full_dir"):
             #print(item)
             new = old_path+"/full_dir"
             os.chdir(new)
-            shutil.move(path, new)
+            shutil.copy(path, new)
 else:
     os.mkdir("full_dir")
     for item in result:
