@@ -34,7 +34,7 @@ else:
             #print(item)
             new = old_path + "/full_dir"
             os.chdir(new)
-            shutil.move(path, new)
+            shutil.copy(path, new)
 
 
 
