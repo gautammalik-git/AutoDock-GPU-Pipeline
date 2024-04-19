@@ -135,7 +135,7 @@ This script will analyze the '.dlg' file for each ligand, providing the binding 
 python3 full_dir.py
 ```
 
-This will relocate the directories listed in the 'Energy.txt' file. Hence, you can transfer the directories corresponding to the specified binding energies using the 'binding_energy_write.py' script followed by 'full_dir.py'.
+This will relocate the dlg files of the ligands listed in the 'Energy.txt' file. Hence, you can transfer the dlg files corresponding to the specified binding energies using the 'binding_energy.py' script followed by 'full_dir.py'.
 
 ### Filtering based on protein-ligand interactions
 
