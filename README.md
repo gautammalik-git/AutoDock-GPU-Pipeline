@@ -1,5 +1,7 @@
 # AutoDock-GPU-Pipeline
 
+This pipeline facilitates setting up ligand docking against a protein using AutoDock-GPU. It streamlines the process of docking a ligand library onto a protein structure, leveraging the enhanced performance of AutoDock-GPU for faster results.
+
 ## Installing AutoDock-GPU
 
 1. To install AutoGrid, follow the same steps as described [here](https://github.com/gautam2002m/AutoDockPipeline). For faster docking on systems with GPUs, install AutoDock-GPU. 
