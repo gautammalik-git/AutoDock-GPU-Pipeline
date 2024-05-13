@@ -21,7 +21,7 @@ if len(sys.argv) == 4:
 else:
     print('''python3 gpu_hts.pdb <protein_pdb_file> <x,y,z> <nrun>
 eg.
-python3 centroid_lig1.pdb 7k15.pdb 1.9392312138728325,-8.92228901734104,18.28384393063584 10
+python3 gpu_hts.pdb 7k15.pdb 1.9392312138728325,-8.92228901734104,18.28384393063584 10
     ''')
 
 
