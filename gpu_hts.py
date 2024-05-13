@@ -6,7 +6,7 @@ if len(sys.argv) == 4:
     protein = sys.argv[1]
     centroid = sys.argv[2]
     nrun = sys.argv[3]
-    files = glob.glob(path + '/CB2.pdb') #taking all pdb files from the current directory
+    files = glob.glob(path + '/*.pdb') #taking all pdb files from the current directory
     coord = []
     for f in files:
         ligand = f.split("/")[-1][:-4] + ".pdb "
