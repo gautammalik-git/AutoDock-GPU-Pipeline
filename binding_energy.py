@@ -1,48 +1,57 @@
 import os
-import sys
 import glob
-path = os.getcwd()
-#print(path)
-file_path = F'{path}/*.dlg'
-#print(file_path)
-with open("Energy.txt", "w+") as output:
-    file_name = glob.glob(file_path)
-    new_list = []
-    for items in file_name:
-        split_item  = items.split("/")
-        new_list.append(split_item[-1])
-        new_fi = sorted(new_list)
-    for item in new_fi:
-        #print(item)
-        with open(item) as f:
-            data = f.readlines()
-            #print(data)
-        for linenum, lines in enumerate(data):
-            if "Num" in lines[34:40]:
-                line_num = linenum
-                line_1 = line_num + 4
-            if "RMSD TABLE" in lines:
-                line_2 = linenum - 3
-        with open(item) as f1:
-            data1 = f1.readlines()[line_1:line_2]
-            #print(data1)
-            list = []
-        for newline in data1:
-            list.append(newline)
-        #print(list)
-        list2 = []
-        for items in list:
-            nex = items[36:40].strip()
-            nex = int(nex)
-            list2.append(nex)
-        #print(list2)
-        #max = max(list2)
-        for items in list:
-            if str(max(list2)) in items[36:40]:
-               final_energy = (F'{item[:-4]} {items[10:16]} kcal/mol')
-               print(final_energy)
-               print(F'Conformations: {items[37:40]} \n')
-               output.write(F'{final_energy} \n')
+import concurrent.futures
+
+def process_file(file_name):
+    with open(file_name) as f:
+        data = f.readlines()
+
+    # Find line 1 and line 2
+    line_1, line_2 = None, None
+    for i, line in enumerate(data):
+        if "Num" in line[34:40]:
+            line_1 = i + 4
+        elif "RMSD TABLE" in line:
+            line_2 = i - 3
+            break
+
+    if line_1 is not None and line_2 is not None:
+        relevant_lines = data[line_1:line_2]
+
+        # Extract energy values and conformations
+        energies = []
+        for line in relevant_lines:
+            try:
+                conformations = int(line[36:40].strip())
+                energy_value = line[10:16].strip()
+                energies.append((conformations, energy_value))
+            except ValueError:
+                continue  # Skip lines with invalid numbers
+
+        if energies:
+            max_conformations, max_energy = max(energies, key=lambda x: x[0])
+            final_energy = f"{os.path.basename(file_name)[:-4]} {max_energy} kcal/mol"
+            return final_energy, max_conformations
+
+    return None, None
 
 
+def main():
+    path = os.getcwd()
+    file_path = f"{path}/*.dlg"
+    file_names = sorted(glob.glob(file_path))  # Get and sort file names
 
+    with open("Energy.txt", "w") as output:
+        # Use ThreadPoolExecutor for parallel processing
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            results = executor.map(process_file, file_names)
+
+            # Write the results to the output file
+            for final_energy, conformations in results:
+                if final_energy:
+                    print(final_energy)
+                    print(f"Conformations: {conformations}\n")
+                    output.write(f"{final_energy}\n")
+
+if __name__ == "__main__":
+    main()
